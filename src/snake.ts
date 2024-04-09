@@ -1,4 +1,8 @@
-class Snake {
+import Canvas, { Wall } from "./canvas";
+import Food from "./food";
+import { Coordinate, Position, TSnake } from "./types";
+
+export default class Snake {
   public directionXY: [Coordinate, Coordinate];
   public speed: number;
   public size: number;

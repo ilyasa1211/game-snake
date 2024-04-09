@@ -1,4 +1,11 @@
-class Game {
+import Canvas from "./canvas";
+import Control from "./control";
+import Food from "./food";
+import { Message } from "./message";
+import Snake from "./snake";
+import Utils from "./utils";
+
+export default class Game {
   private _isGameOver = false;
   private _score: number = 0;
 
@@ -33,10 +40,10 @@ class Game {
   }
 
   public setMessage(message: Message): void {
-    message.show(this.canvas.context);
+    message.show(this.canvas.context, this.canvas);
   }
 
-  public play() {
+  public play(context: CanvasRenderingContext2D) {
     if (this.snake.isCollideWithWall(this.canvas)) {
       this.isGameOver(true);
     }

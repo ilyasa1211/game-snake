@@ -1,11 +1,11 @@
-class Wall {
-    public static LEFT_BOUNDARY = "LEFT";
-    public static TOP_BOUNDARY = "TOP";
-    public static RIGHT_BOUNDARY = "RIGHT";
-    public static BOTTOM_BOUNDARY = "BOTTOM";
+export class Wall {
+  public static LEFT_BOUNDARY = "LEFT";
+  public static TOP_BOUNDARY = "TOP";
+  public static RIGHT_BOUNDARY = "RIGHT";
+  public static BOTTOM_BOUNDARY = "BOTTOM";
 }
 
-class Canvas extends Wall {
+export default class Canvas extends Wall {
   public context: CanvasRenderingContext2D;
   public constructor(
     public canvas: HTMLCanvasElement,

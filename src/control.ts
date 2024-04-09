@@ -1,5 +1,7 @@
+import Direction from "./direction";
+import Snake from "./snake";
 
-class Control {
+export default class Control {
     public constructor(public snake: Snake) { }
     public init(): void {
         window.addEventListener("keydown", (event: KeyboardEvent): void => {

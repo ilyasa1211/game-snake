@@ -1,17 +1,17 @@
-abstract class Message {
-  public abstract show(context: CanvasRenderingContext2D): void;
+import Canvas from "./canvas";
+
+export interface Message {
+  show(context: CanvasRenderingContext2D, canvas: Canvas): void;
 }
 
-class CenterMessage extends Message {
+export class CenterMessage implements Message {
   public constructor(
     public message: string,
     public color: string = "white",
     public font = "50px Arial"
-  ) {
-    super();
-  }
+  ) { }
 
-  public show(context: CanvasRenderingContext2D): void {
+  public show(context: CanvasRenderingContext2D, canvas: Canvas): void {
     context.font = this.font;
     context.fillStyle = this.color;
     let measureText = context.measureText(this.message);
@@ -20,7 +20,7 @@ class CenterMessage extends Message {
       (canvas.width * canvas.multiplier - measureText.width) / 2,
       (canvas.height * canvas.multiplier +
         measureText.actualBoundingBoxAscent) /
-        2
+      2
     );
   }
 }

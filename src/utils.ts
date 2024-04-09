@@ -1,4 +1,7 @@
-class Utils {
+import Canvas from "./canvas";
+import { Position } from "./types";
+
+export default class Utils {
     public static getIntegerRandomNumberBetween(min: number, max: number): number {
         return Math.floor(Math.random() * (max - min) + min);
     }
