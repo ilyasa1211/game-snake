@@ -1,6 +1,6 @@
-import Canvas, { Wall } from "./canvas";
-import Food from "./food";
-import { Coordinate, Position, TSnake } from "./types";
+import Canvas, { Wall } from "./canvas.ts";
+import Food from "./food.ts";
+import type { Coordinate, Position, TSnake } from "./types.ts";
 
 export default class Snake {
   public directionXY: [Coordinate, Coordinate];
@@ -68,8 +68,8 @@ export default class Snake {
     const nextPositionX = this.nextMovePosition().positionX;
     const nextPositionY = this.nextMovePosition().positionY;
 
-    const snakeHeadHitboxSingularX: number = nextPositionX + this.size / 2;
-    const snakeHeadHitboxSingularY: number = nextPositionY + this.size / 2;
+    // const snakeHeadHitboxSingularX: number = nextPositionX + this.size / 2;
+    // const snakeHeadHitboxSingularY: number = nextPositionY + this.size / 2;
 
     for (let index = this.positionXY.length - 1; index > 0; index--) {
       const nextTailPositionX = this.positionXY[index - 1].positionX;

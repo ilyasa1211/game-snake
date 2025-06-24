@@ -1,5 +1,5 @@
-import Canvas from "./canvas";
-import { Position } from "./types";
+import Canvas from "./canvas.ts";
+import type { Position } from "./types.ts";
 
 export default class Utils {
     public static getIntegerRandomNumberBetween(min: number, max: number): number {

@@ -1,11 +1,18 @@
 export default class Food {
   public positionX: number = 0;
   public positionY: number = 0;
+  public size;
+  public color;
+
 
   public constructor(
-    public size: number,
-    public color: string = 'red'
-  ) { }
+    size: number,
+    color: string = 'red'
+  ) { 
+    this.size = size;
+    this.color = color;
+  }
+
   public setPosition(positionX: number, positionY: number): void {
     this.positionX = positionX;
     this.positionY = positionY;

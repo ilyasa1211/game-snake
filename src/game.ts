@@ -1,20 +1,30 @@
-import Canvas from "./canvas";
-import Control from "./control";
-import Food from "./food";
-import { Message } from "./message";
-import Snake from "./snake";
-import Utils from "./utils";
+import Canvas from "./canvas.ts";
+import Control from "./control.ts";
+import Food from "./food.ts";
+import type { Message } from "./message.ts";
+import Snake from "./snake.ts";
+import Utils from "./utils.ts";
 
 export default class Game {
   private _isGameOver = false;
   private _score: number = 0;
+    public snake: Snake;
+    public food: Food;
+    public canvas: Canvas;
+    public control: Control;
+
 
   public constructor(
-    public snake: Snake,
-    public food: Food,
-    public canvas: Canvas,
-    public control: Control
+    snake: Snake,
+    food: Food,
+    canvas: Canvas,
+    control: Control
   ) {
+    this.snake = snake;
+    this.food = food;
+    this.canvas = canvas;
+    this.control = control;
+
     const randomFoodPositionX =
       Utils.getIntegerRandomNumberBetween(0, this.canvas.width) *
       this.canvas.multiplier;

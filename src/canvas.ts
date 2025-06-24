@@ -7,14 +7,26 @@ export class Wall {
 
 export default class Canvas extends Wall {
   public context: CanvasRenderingContext2D;
+  public canvas;
+  public width;
+  public height;
+  public multiplier;
+  public backgroundColor;
+
   public constructor(
-    public canvas: HTMLCanvasElement,
-    public width: number = 30,
-    public height: number = 40,
-    public multiplier = 1,
-    public backgroundColor: string = "rgb(46,46,46)"
+    canvas: HTMLCanvasElement,
+    width: number = 30,
+    height: number = 40,
+    multiplier = 1,
+    backgroundColor: string = "rgb(46,46,46)"
   ) {
     super();
+
+    this.canvas = canvas;
+    this.width = width;
+    this.height = height;
+    this.multiplier = multiplier;
+    this.backgroundColor = backgroundColor;
     this.context = this.canvas.getContext("2d")!;
   }
 

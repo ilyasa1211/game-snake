@@ -1,4 +1,4 @@
-import { Coordinate } from "./types";
+import type { Coordinate } from "./types.ts";
 
 export default class Direction {
   public static readonly LEFT: [Coordinate, Coordinate] = [-1, 0];

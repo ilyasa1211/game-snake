@@ -1,8 +1,12 @@
-import Direction from "./direction";
-import Snake from "./snake";
+import Direction from "./direction.ts";
+import Snake from "./snake.ts";
 
 export default class Control {
-    public constructor(public snake: Snake) { }
+    public snake: Snake
+    public constructor(snake: Snake) {
+        this.snake = snake;
+    }
+
     public init(): void {
         window.addEventListener("keydown", (event: KeyboardEvent): void => {
             if (event.key === "ArrowLeft" && !Direction.isSameDirection(Direction.RIGHT, this.snake.directionXY)) {

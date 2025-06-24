@@ -1,11 +1,17 @@
-import Canvas from "./canvas";
-import Control from "./control";
-import Direction from "./direction";
-import Food from "./food";
-import Game from "./game";
-import { CenterMessage } from "./message";
-import Snake from "./snake";
-import Utils from "./utils";
+import Canvas from "./canvas.ts";
+import Control from "./control.ts";
+import Direction from "./direction.ts";
+import Food from "./food.ts";
+import Game from "./game.ts";
+import { CenterMessage } from "./message.ts";
+import Snake from "./snake.ts";
+import Utils from "./utils.ts";
+
+import "./style.css";
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+  <canvas></canvas>
+`
 
 export default class Main {
     public static requestId: number = 0;
@@ -39,6 +45,13 @@ export default class Main {
         setTimeout(() => {
             this.requestId = window.requestAnimationFrame(() => this.run(game, canvas));
         }, 1000 / 10);
-
     }
 }
+
+const htmlCanvas = document.querySelector("canvas") as HTMLCanvasElement;
+
+if (!htmlCanvas.getContext("2d")) {
+    throw new Error("Your browser does not support Canvas 2d");
+}
+
+Main.main(htmlCanvas)
