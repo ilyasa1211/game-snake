@@ -8,4 +8,7 @@ RUN apt-get update \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
+RUN corepack enable pnpm && \
+    yes | pnpm -v
+
 USER $USERNAME

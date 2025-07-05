@@ -6,10 +6,9 @@ I try to create a snake game with typescript
 
 
 # Todo
-- food should not spawn inside the snake body
 - show score and highscore
 - add restart button instead of refresh the whole page
-- add menu to custom size, color and speed for snake
-- add menu to custom size and color for food
-- add menu to custom canvas size and color
-- add game over if the snake is eating itself, can be customized
+- add menu to adjust size, color and speed for snake
+- add menu to adjust size and color for food
+- add menu to adjust canvas size and color
+- customization game over if the snake is eating itself

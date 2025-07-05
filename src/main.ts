@@ -1,57 +1,40 @@
-import Canvas from "./canvas.ts";
-import Control from "./control.ts";
-import Direction from "./direction.ts";
-import Food from "./food.ts";
 import Game from "./game.ts";
-import { CenterMessage } from "./message.ts";
-import Snake from "./snake.ts";
-import Utils from "./utils.ts";
-
+import KeyboardInput from "./inputs/keyboard.ts";
+import type { IGame } from "./interfaces.ts";
 import "./style.css";
+import { GameLoseEvent, GameWinEvent } from "./events/gameover.ts";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+const app = document.querySelector<HTMLDivElement>("#app") as HTMLDivElement;
+
+app.innerHTML = `
   <canvas></canvas>
-`
+`;
 
-export default class Main {
-    public static requestId: number = 0;
+const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 
-    public static main(htmlCanvas: HTMLCanvasElement): void {
-        const snakeSize = 10;
-        const canvas = new Canvas(htmlCanvas, 30, 40, snakeSize);
-        const snake: Snake = new Snake({
-            directionXY: Direction.RIGHT,
-            speed: 1,
-            size: snakeSize,
-            positionX: [Utils.getCanvasMiddlePosition(canvas).positionX],
-            positionY: [Utils.getCanvasMiddlePosition(canvas).positionY],
-            color: "white",
-        });
-        const food: Food = new Food(snakeSize);
-        const control = new Control(snake);
-        const game = new Game(snake, food, canvas, control);
+const game = new Game(canvas, [new KeyboardInput()]);
 
-        this.requestId = window.requestAnimationFrame(() => this.run(game, canvas));
-    }
+let requestId = requestAnimationFrame(() => run(game));
+let isFinish = false;
 
-    public static run(game: Game, canvas: Canvas) {
-        if (game.isGameOver()) {
-            game.setMessage(new CenterMessage("Game Over!"));
-            return window.cancelAnimationFrame(this.requestId);
-        }
-        canvas.clear();
-        game.play(canvas.context);
+function run(game: IGame) {
+  if (isFinish) {
+    cancelAnimationFrame(requestId);
+    return;
+  }
 
-        setTimeout(() => {
-            this.requestId = window.requestAnimationFrame(() => this.run(game, canvas));
-        }, 1000 / 10);
-    }
+  requestId = requestAnimationFrame((now) => {
+    game.onUpdate(now);
+    run(game);
+  });
 }
 
-const htmlCanvas = document.querySelector("canvas") as HTMLCanvasElement;
+game.addEventListener(GameLoseEvent.name, () => {
+  isFinish = true;
+  alert("you lose");
+});
 
-if (!htmlCanvas.getContext("2d")) {
-    throw new Error("Your browser does not support Canvas 2d");
-}
-
-Main.main(htmlCanvas)
+game.addEventListener(GameWinEvent.name, () => {
+  isFinish = true;
+  alert("you win");
+});
