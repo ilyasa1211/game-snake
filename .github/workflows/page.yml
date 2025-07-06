@@ -28,7 +28,7 @@ jobs:
     - name: Build
       run: |
         pnpm i
-        pnpm run build
+        pnpm run build:github
 
     - name: Upload static files as artifact
       uses: actions/upload-pages-artifact@v3

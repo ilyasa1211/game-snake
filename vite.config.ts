@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig((env) => ({
   plugins: [],
-  base: "/game-snake",
-});
+  base: env.mode === "github" ? "/game-snake" : "/",
+}));

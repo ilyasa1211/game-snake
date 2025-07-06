@@ -4,8 +4,39 @@ I try to create a snake game with typescript
 
 ![snake](https://github.com/SiapaLupa/snake-game-js/assets/110075636/f6307ab6-36c1-40c8-b43e-d5e7e91390c0)
 
+## Try locally
 
-# Todo
+Install node dependencies
+
+```bash
+pnpm run install
+```
+
+Run
+
+```bash
+pnpm run dev --host
+```
+
+now go to http://localhost:5173
+
+## Try locally with docker
+
+Build the image
+
+```bash
+docker build --tag=game-snake .
+```
+
+Run the server
+
+```bash
+docker run --rm -p 8000:80 game-snake
+```
+
+now go to http://localhost:8000
+
+## Todo
 - show score and highscore
 - add restart button instead of refresh the whole page
 - add menu to adjust size, color and speed for snake

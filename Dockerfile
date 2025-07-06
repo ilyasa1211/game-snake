@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM node:24-alpine AS build
 
 WORKDIR /app
 
@@ -13,3 +13,9 @@ RUN --mount=type=bind,src=package.json,target=package.json \
 COPY . .
 
 RUN pnpm run build
+
+FROM nginx:1.29-alpine
+
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
