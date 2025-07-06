@@ -2,7 +2,7 @@
 
 I try to create a snake game with typescript
 
-![snake](https://github.com/SiapaLupa/snake-game-js/assets/110075636/f6307ab6-36c1-40c8-b43e-d5e7e91390c0)
+![image](https://github.com/user-attachments/assets/183cdd8a-9900-4835-bd35-9ae30938220f)
 
 ## Try locally
 
